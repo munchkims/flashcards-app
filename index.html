@@ -7,7 +7,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="flashcard-container">
+  <!-- Step 1: Group selection -->
+  <div id="group-screen">
+    <h2>Select a Flashcawd Gwoup</h2>
+    <div id="group-buttons">
+      <!-- JS will create buttons for each group -->
+    </div>
+  </div>
+
+  <!-- Step 2: Flashcards -->
+  <div id="flashcard-screen" style="display:none;">
     <div id="flashcard">
       <div id="front"></div>
       <div id="back" style="display:none;"></div>
@@ -16,6 +25,7 @@
     <button id="next">Next</button>
     <button id="save">Save Progress</button>
     <button id="load">Load Progress</button>
+    <button id="back-to-groups">Back to Groups</button>
   </div>
 
   <script src="app.js"></script>

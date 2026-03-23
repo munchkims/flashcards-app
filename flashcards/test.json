@@ -1,0 +1,5 @@
+[
+  { "front": "Hello", "back": "Bonjour" },
+  { "front": "Thank you", "back": "Merci" },
+  { "front": "Cat", "back": "Chat" }
+]

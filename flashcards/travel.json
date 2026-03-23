@@ -1,0 +1,5 @@
+[
+  { "front": "Airport", "back": "Aéroport" },
+  { "front": "Train", "back": "Train" },
+  { "front": "Hotel", "back": "Hôtel" }
+]
