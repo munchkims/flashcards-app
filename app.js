@@ -1,5 +1,5 @@
-// List of group files
-const groups = ['food.json', 'travel.json', 'animals.json'];
+// List of group  files
+const groups = ['food.json', 'travel.json', 'test.json'];
 const folderPath = 'flashcards/';
 
 let cards = [];
