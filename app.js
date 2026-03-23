@@ -1,6 +1,6 @@
 // List of group  files
 const groups = ['food.json', 'travel.json', 'test.json'];
-const folderPath = 'flashcards/';
+const folderPath = './flashcards/';
 
 let cards = [];
 let currentIndex = 0;
