@@ -12,6 +12,26 @@ const flashcardScreen = document.getElementById('flashcard-screen');
 
 const frontEl = document.getElementById('front');
 const backEl = document.getElementById('back');
+const flashcardEl = document.getElementById('flashcard');
+
+let touchStartX = 0;
+let touchEndX = 0;
+const SWIPE_THRESHOLD = 50; // minimum px to count as swipe
+
+
+flashcardEl.addEventListener('click', () => {
+  showingFront = !showingFront;
+  showCard();
+});
+
+flashcardEl.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+flashcardEl.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
 
 // Dynamically create buttons for each group
 groups.forEach(group => {
@@ -37,12 +57,6 @@ function loadGroup(filename) {
       currentGroup = filename;
     });
 }
-
-// Flip / next
-document.getElementById('flip').addEventListener('click', () => {
-  showingFront = !showingFront;
-  showCard();
-});
 
 document.getElementById('next').addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % cards.length;
@@ -75,6 +89,23 @@ function showCard() {
   backEl.textContent = card.back;
   frontEl.style.display = showingFront ? 'block' : 'none';
   backEl.style.display = showingFront ? 'none' : 'block';
+}
+
+function handleSwipe() {
+  const diff = touchStartX - touchEndX;
+
+  if (Math.abs(diff) < SWIPE_THRESHOLD) return;
+
+  if (diff > 0) {
+    // swipe LEFT → next card
+    currentIndex = (currentIndex + 1) % cards.length;
+  } else {
+    // swipe RIGHT → previous card (optional)
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+  }
+
+  showingFront = true;
+  showCard();
 }
 
 // Load progress
